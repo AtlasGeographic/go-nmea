@@ -74,8 +74,9 @@ func (s *Sentence) sumOk() error {
 	if len(calculated) == 1 {
 		calculated = "0" + calculated
 	}
-	if calculated != s.Checksum {
-		return fmt.Errorf("[%s != %s]", calculated, s.Checksum)
+
+	if strings.EqualFold(calculated, s.Checksum) { // calculated != s.Checksum {
+		return fmt.Errorf("[%v != %v]", calculated, s.Checksum)
 	}
 	return nil
 }

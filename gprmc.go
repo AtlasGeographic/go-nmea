@@ -63,11 +63,13 @@ func (s *GPRMC) parse() error {
 	}
 	s.Speed, err = strconv.ParseFloat(s.Fields[6], 64)
 	if err != nil {
-		return fmt.Errorf("GPRMC decode speed error: %s", s.Fields[6])
+		s.Speed = 0
+		//return fmt.Errorf("GPRMC decode speed error: %s", s.Fields[6])
 	}
 	s.Course, err = strconv.ParseFloat(s.Fields[7], 64)
 	if err != nil {
-		return fmt.Errorf("GPRMC decode course error: %s", s.Fields[7])
+		s.Course = 0
+		//return fmt.Errorf("GPRMC decode course error: %s", s.Fields[7])
 	}
 	s.Date = s.Fields[8]
 
